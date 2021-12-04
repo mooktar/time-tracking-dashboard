@@ -1,0 +1,292 @@
+/*
+    Project: Time Tracking Dashboard
+    By: mooktar
+    Version: 1.0
+*/
+
+/* ============ VARIABLES ============ */
+
+// Responsive layout
+$mobile: 375px;
+$desktop: 1440px;
+
+// Primary Color
+$blue: hsl(246, 80%, 60%);
+$lighted-red: hsl(15, 100%, 70%);
+$soft-blue: hsl(195, 74%, 62%);
+$light-red: hsl(348, 100%, 68%);
+$lime-green: hsl(145, 58%, 55%);
+$violet: hsl(264, 64%, 52%);
+$soft-orange: hsl(43, 84%, 65%);
+
+// Neutral Color
+$darked-blue: hsl(226, 43%, 10%);
+$dark-blue: hsl(235, 46%, 20%);
+$desaturated-blue: hsl(235, 45%, 61%);
+$pale-blue: hsl(236, 100%, 87%);
+
+// Font
+$font-size: 18px;
+$font-family: "Red Hat Display", sans-serif;
+$wght-300: 300;
+$wght-400: 400;
+$wght-500: 500;
+
+// Sizes
+$radius: 15px;
+
+
+/* ============ MIXINS ============ */
+@mixin cardHeaderImg($type) {
+    $src: '../images/icon-' + $type + '.svg';
+    background: url($src) no-repeat 90% 30% / 30%;
+}
+
+
+
+/* ============ RESET ============ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family;
+    background: $darked-blue;
+    color: #fff;
+    line-height: 1.2;
+}
+
+ul, li {
+    list-style: none;
+}
+
+a, a:hover, a:focus {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* ============ WRAPPER ============ */
+.wrapper {
+    max-width: $desktop;
+    min-height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+/* ============ DASHBOARD ============ */
+.dashboard {
+    display: grid;
+    margin: 3em 0;
+    grid-gap: 20px;
+    grid-template-columns: 25% 3fr;
+
+    .profile, .card {
+        width: auto;
+        border-radius: $radius;
+
+        &__body {
+            padding: 1.8em 1.5em;
+            border-radius: $radius;
+            background: $dark-blue;
+        }
+    }
+}
+
+
+/* ============ PROFILE ============ */
+.profile {
+    background: $dark-blue;
+    &__header {
+        padding: 1.8em 1.5em;
+        border-radius: $radius;
+        background: $blue;
+        & img {
+            display: block;
+            width: 60px;
+            height: auto;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            margin-bottom: 1.5em;
+        }
+        & span {
+            font-size: 0.8em;
+            color: $pale-blue;
+        }
+        & h2 {
+            font-size: 2em;
+            font-weight: $wght-300;
+            margin-bottom: 1em;
+        }
+    }
+    &__body {
+        & .list-item {
+            padding: 0.2em 0;
+            margin: 0.2em 0;
+            color: $pale-blue;
+            cursor: pointer;
+            transition: 'color' .3s ease-in-out;
+    
+            &:hover, &.active {
+                color: #fff;
+            }
+        }
+    }
+}
+
+
+
+/* ============ GRID ============ */
+.grid {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+
+/* ============ CARD ============ */
+.card {
+    &__header {
+        height: 32px;
+    }
+
+    &.work {
+        background: $lighted-red;
+        & .card__header {
+            @include cardHeaderImg(work);
+        }
+    }
+    &.play {
+        background: $soft-blue;
+        & .card__header {
+            @include cardHeaderImg(play);
+        }
+    }
+    &.study {
+        background: $light-red;
+        & .card__header {
+            @include cardHeaderImg(study);
+        }
+    }
+    &.exercise {
+        background: $lime-green;
+        & .card__header {
+            @include cardHeaderImg(exercise);
+        }
+    }
+    &.social {
+        background: $violet;
+        & .card__header {
+            @include cardHeaderImg(social);
+        }
+    }
+    &.self-care {
+        background: $soft-orange;
+        & .card__header {
+            @include cardHeaderImg(self-care);
+        }
+    }
+    
+    &__body {
+        padding: 2em 1.5em;
+        cursor: pointer;
+        &:hover {
+            background: $desaturated-blue;
+        }
+    
+        & .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2em;
+            font-size: 0.9em;
+        }
+        & .title {
+            font-weight: $wght-500;
+        }
+        & img {
+            cursor: pointer;
+            &:hover {
+                fill: #fff;
+            }
+        }
+        & .current {
+            font-size: 2.2em;
+            font-weight: $wght-400;
+        }
+        & .previous {
+            margin: 0.3em 0;
+            font-size: 1em;
+            font-weight: $wght-300;
+            color: $pale-blue;
+        }
+    }
+}
+
+
+/* ============ MEDIA QUERY ============ */
+.attribution {
+    margin: 1em 0;
+    padding: 0 0.5em;
+    text-align: center;
+    line-height: 1.3;
+    color: $pale-blue;
+
+    & a {
+        color: $blue;
+        transition: 'color' .3s ease-in-out;
+        &:hover {
+            color: $desaturated-blue;
+        }
+    }
+}
+
+
+/* ============ MEDIA QUERY ============ */
+@media screen and (max-width: $mobile) {
+    .dashboard {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .profile__header {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+
+        & img {
+            display: inline-block;
+        }
+        & div {
+            display: inline-block;
+            margin-left: 0.6em;
+        }
+    }
+
+    .profile__body {
+        & .list {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .card {
+        &__text {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+    }
+}

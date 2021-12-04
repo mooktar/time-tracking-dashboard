@@ -1,0 +1,231 @@
+/*
+    Project: Time Tracking Dashboard
+    By: mooktar
+    Version: 1.0
+*/
+/* ============ VARIABLES ============ */
+/* ============ MIXINS ============ */
+/* ============ RESET ============ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Red Hat Display", sans-serif;
+  background: #0f1424;
+  color: #fff;
+  line-height: 1.2;
+}
+
+ul, li {
+  list-style: none;
+}
+
+a, a:hover, a:focus {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============ WRAPPER ============ */
+.wrapper {
+  max-width: 1440px;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* ============ DASHBOARD ============ */
+.dashboard {
+  display: grid;
+  margin: 3em 0;
+  grid-gap: 20px;
+  grid-template-columns: 25% 3fr;
+}
+.dashboard .profile, .dashboard .card {
+  width: auto;
+  border-radius: 15px;
+}
+.dashboard .profile__body, .dashboard .card__body {
+  padding: 1.8em 1.5em;
+  border-radius: 15px;
+  background: #1c1f4a;
+}
+
+/* ============ PROFILE ============ */
+.profile {
+  background: #1c1f4a;
+}
+.profile__header {
+  padding: 1.8em 1.5em;
+  border-radius: 15px;
+  background: #5847eb;
+}
+.profile__header img {
+  display: block;
+  width: 60px;
+  height: auto;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  margin-bottom: 1.5em;
+}
+.profile__header span {
+  font-size: 0.8em;
+  color: #bdc1ff;
+}
+.profile__header h2 {
+  font-size: 2em;
+  font-weight: 300;
+  margin-bottom: 1em;
+}
+.profile__body .list-item {
+  padding: 0.2em 0;
+  margin: 0.2em 0;
+  color: #bdc1ff;
+  cursor: pointer;
+  transition: "color" 0.3s ease-in-out;
+}
+.profile__body .list-item:hover, .profile__body .list-item.active {
+  color: #fff;
+}
+
+/* ============ GRID ============ */
+.grid {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* ============ CARD ============ */
+.card__header {
+  height: 32px;
+}
+.card.work {
+  background: #ff8c66;
+}
+.card.work .card__header {
+  background: url("../images/icon-work.svg") no-repeat 90% 30%/30%;
+}
+.card.play {
+  background: #56c2e6;
+}
+.card.play .card__header {
+  background: url("../images/icon-play.svg") no-repeat 90% 30%/30%;
+}
+.card.study {
+  background: #ff5c7c;
+}
+.card.study .card__header {
+  background: url("../images/icon-study.svg") no-repeat 90% 30%/30%;
+}
+.card.exercise {
+  background: #4acf81;
+}
+.card.exercise .card__header {
+  background: url("../images/icon-exercise.svg") no-repeat 90% 30%/30%;
+}
+.card.social {
+  background: #7536d3;
+}
+.card.social .card__header {
+  background: url("../images/icon-social.svg") no-repeat 90% 30%/30%;
+}
+.card.self-care {
+  background: #f1c65b;
+}
+.card.self-care .card__header {
+  background: url("../images/icon-self-care.svg") no-repeat 90% 30%/30%;
+}
+.card__body {
+  padding: 2em 1.5em;
+  cursor: pointer;
+}
+.card__body:hover {
+  background: #6f76c8;
+}
+.card__body .nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+  font-size: 0.9em;
+}
+.card__body .title {
+  font-weight: 500;
+}
+.card__body img {
+  cursor: pointer;
+}
+.card__body img:hover {
+  fill: #fff;
+}
+.card__body .current {
+  font-size: 2.2em;
+  font-weight: 400;
+}
+.card__body .previous {
+  margin: 0.3em 0;
+  font-size: 1em;
+  font-weight: 300;
+  color: #bdc1ff;
+}
+
+/* ============ MEDIA QUERY ============ */
+.attribution {
+  margin: 1em 0;
+  padding: 0 0.5em;
+  text-align: center;
+  line-height: 1.3;
+  color: #bdc1ff;
+}
+.attribution a {
+  color: #5847eb;
+  transition: "color" 0.3s ease-in-out;
+}
+.attribution a:hover {
+  color: #6f76c8;
+}
+
+/* ============ MEDIA QUERY ============ */
+@media screen and (max-width: 375px) {
+  .dashboard {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .profile__header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+  .profile__header img {
+    display: inline-block;
+  }
+  .profile__header div {
+    display: inline-block;
+    margin-left: 0.6em;
+  }
+
+  .profile__body .list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .card__text {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

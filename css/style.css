@@ -157,10 +157,10 @@ a, a:hover, a:focus {
 .card__body .title {
   font-weight: 500;
 }
-.card__body img {
+.card__body .img-svg {
   cursor: pointer;
 }
-.card__body img:hover {
+.card__body .img-svg:hover {
   fill: #fff;
 }
 .card__body .current {

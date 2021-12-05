@@ -210,8 +210,9 @@ a, a:hover, a:focus {
         & .title {
             font-weight: $wght-500;
         }
-        & img {
+        & .img-svg {
             cursor: pointer;
+            
             &:hover {
                 fill: #fff;
             }

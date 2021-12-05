@@ -1,4 +1,3 @@
-const grid = document.querySelector('.grid')
 const list_items = document.querySelectorAll('.list-item')
 
 /**
@@ -23,23 +22,13 @@ fetchData()
  * @param {string} type String
  */
 function displayCard(data, type) {
-    const card = document.createElement('div')
-    const title = data.title.toString().replace(/[' ']/, '-')
+    const title = data.title.toString().toLowerCase().replace(/[' ']/, '-')
     const times = data.timeframes[type]
-    
-    card.classList = `card ${title.toLowerCase()}`
-    card.innerHTML = `<div class="card__header"></div>
-        <div class="card__body">
-            <div class="nav">
-                <span class="title">${title}</span>
-                <img src="./images/icon-ellipsis.svg" alt="...">
-            </div>
-            <div class="card__text">
-                <h2 class="current">${times.current}hrs</h2>
-                <p class="previous">Last Week - ${times.previous}hrs</p>
-            </div>
-        </div>`
-    grid.appendChild(card)
+    const current_hrs = document.querySelector(`.${title} .current .hrs`)
+    const previous_hrs = document.querySelector(`.${title} .previous .hrs`)
+
+    current_hrs.innerHTML = times.current
+    previous_hrs.innerHTML = times.previous
 }
 
 list_items.forEach(item => {
@@ -51,8 +40,8 @@ list_items.forEach(item => {
             }
         })
         item.classList.add('active')
+
         // Display fresh data
-        grid.innerHTML = ''
         fetchData(item.innerHTML)
     })
 })
